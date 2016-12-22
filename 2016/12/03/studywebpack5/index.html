@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>WebPack学习笔记（五） | 西十三的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CommonJS 规范
+CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。
+这个项目最开始是由 Mozilla 的工程师 Kevin Dangoor 在2009年1月创建的，当时的名字是 ServerJS。我在这里描述的并不是一个技术问题，而是一件重大的事情，让大家走到一起来做决定，迈出第一步，来建立一个更大更酷的东西。 
+—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebPack学习笔记（五）">
+<meta property="og:url" content="http://yoursite.com/2016/12/03/studywebpack5/index.html">
+<meta property="og:site_name" content="西十三的Blog">
+<meta property="og:description" content="CommonJS 规范
+CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。
+这个项目最开始是由 Mozilla 的工程师 Kevin Dangoor 在2009年1月创建的，当时的名字是 ServerJS。我在这里描述的并不是一个技术问题，而是一件重大的事情，让大家走到一起来做决定，迈出第一步，来建立一个更大更酷的东西。 
+—">
+<meta property="og:image" content="http://ohe5u4k9s.bkt.clouddn.com/what-is-webpack.png">
+<meta property="og:updated_time" content="2016-12-03T02:27:42.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebPack学习笔记（五）">
+<meta name="twitter:description" content="CommonJS 规范
+CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。
+这个项目最开始是由 Mozilla 的工程师 Kevin Dangoor 在2009年1月创建的，当时的名字是 ServerJS。我在这里描述的并不是一个技术问题，而是一件重大的事情，让大家走到一起来做决定，迈出第一步，来建立一个更大更酷的东西。 
+—">
+<meta name="twitter:image" content="http://ohe5u4k9s.bkt.clouddn.com/what-is-webpack.png">
+  
+    <link rel="alternative" href="/atom.xml" title="西十三的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      
+<div class="overlay"></div>
+ <img src="http://ohe5u4k9s.bkt.clouddn.com/528865142354925.jpg" width="400px" height="180px" />
+<div class="intrude-less">
+	<h2 style="color: red;">i have never been perfect,<br/>
+		but neither have you.<br/>
+	    I can't be who you are.</h2>
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+			
+		</a> 
+		<hgroup>
+		  <h1 class="header-author"><a href="/">西十三</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">A lament for the days forever lost to the Banshee Queen.</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives/">所有博文</a></li>
+	        
+				<li><a href="/Pages/Map.html">我在</a></li>
+	        
+				<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+		
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">西十三</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">西十三</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">A lament for the days forever lost to the Banshee Queen.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有博文</a></li>
+		        
+					<li><a href="/Pages/Map.html">我在</a></li>
+		        
+					<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-studywebpack5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WebPack学习笔记（五）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/what-is-webpack.png" alt=""></p>
+<p><strong>CommonJS 规范</strong></p>
+<p>CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。</p>
+<p>这个项目最开始是由 Mozilla 的工程师 Kevin Dangoor 在2009年1月创建的，当时的名字是 ServerJS。<br><code>我在这里描述的并不是一个技术问题，而是一件重大的事情，让大家走到一起来做决定，迈出第一步，来建立一个更大更酷的东西。 
+—— Kevin Dangoor&#39;s What Server Side JavaScript needs</code><br>2009年8月，这个项目改名为 CommonJS，以显示其 API 的更广泛实用性。CommonJS 是一套规范，它的创建和核准是开放的。<br>这个规范已经有很多版本和具体实现。CommonJS 并不是属于 ECMAScript TC39 小组的工作，但 TC39 中的一些成员参与 CommonJS 的制定。<br>2013年5月，Node.js 的包管理器 NPM 的作者 Isaac Z. Schlueter 说 CommonJS 已经过时，Node.js 的内核开发者已经废弃了该规范。<br>CommonJS 规范是为了解决 JavaScript 的作用域问题而定义的模块形式，可以使每个模块它自身的命名空间中执行。<br>该规范的主要内容是，模块必须通过 module.exports 导出对外的变量或接口，通过 require() 来导入其他模块的输出到当前模块作用域中。</p>
+<p>一个直观的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// moduleA.js</div><div class="line">module.exports = function( value )&#123;</div><div class="line">    return value * 2;</div><div class="line">&#125;</div><div class="line">// moduleB.js</div><div class="line">var multiplyBy2 = require(&apos;./moduleA&apos;);</div><div class="line">var result = multiplyBy2(4);</div></pre></td></tr></table></figure>
+<p>CommonJS 是同步加载模块，但其实也有浏览器端的实现，其原理是现将所有模块都定义好并通过 id 索引，<br>这样就可以方便的在浏览器环境中解析了，可以参考 require1k 和 tiny-browser-require 的源码来理解其解析（resolve）的过程。</p>
+<p><strong>AMD 规范</strong></p>
+<p>AMD（异步模块定义）是为浏览器环境设计的，因为 CommonJS 模块系统是同步加载的，当前浏览器环境还没有准备好同步加载模块的条件。</p>
+<p>AMD 定义了一套 JavaScript 模块依赖异步加载标准，来解决同步加载的问题。</p>
+<p>模块通过 define 函数定义在闭包中，格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">define(id?: String, dependencies?: String[], factory: Function|Object);</div><div class="line">id 是模块的名字，它是可选的参数。</div><div class="line"></div><div class="line">dependencies 指定了所要依赖的模块列表，它是一个数组，也是可选的参数，每个依赖的模块的输出将作为参数一次传入 factory 中。如果没有指定 dependencies，那么它的默认值是 [&quot;require&quot;, &quot;exports&quot;, &quot;module&quot;]。</div><div class="line"></div><div class="line">define(function(require, exports, module) &#123;&#125;）</div><div class="line">factory 是最后一个参数，它包裹了模块的具体实现，它是一个函数或者对象。如果是函数，那么它的返回值就是模块的输出接口或值。</div></pre></td></tr></table></figure></p>
+<p>一些用例：</p>
+<p>定义一个名为 myModule 的模块，它依赖 jQuery 模块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">define(&apos;myModule&apos;, [&apos;jquery&apos;], function($) &#123;</div><div class="line">    // $ 是 jquery 模块的输出</div><div class="line">    $(&apos;body&apos;).text(&apos;hello world&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>// 使用<br>define([‘myModule’], function(myModule) {});<br>注意：在 webpack 中，模块名只有局部作用域，在 Require.js 中模块名是全局作用域，可以在全局引用。</p>
+<p>定义一个没有 id 值的匿名模块，通常作为应用的启动函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">define([&apos;jquery&apos;], function($) &#123;</div><div class="line">    $(&apos;body&apos;).text(&apos;hello world&apos;);</div><div class="line">&#125;);</div><div class="line">依赖多个模块的定义：</div><div class="line"></div><div class="line">define([&apos;jquery&apos;, &apos;./math.js&apos;], function($, math) &#123;</div><div class="line">    // $ 和 math 一次传入 factory</div><div class="line">    $(&apos;body&apos;).text(&apos;hello world&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>模块输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">define([&apos;jquery&apos;], function($) &#123;</div><div class="line"></div><div class="line">    var HelloWorldize = function(selector)&#123;</div><div class="line">        $(selector).text(&apos;hello world&apos;);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    // HelloWorldize 是该模块输出的对外接口</div><div class="line">    return HelloWorldize;</div><div class="line">&#125;);</div><div class="line">在模块定义内部引用依赖：</div><div class="line"></div><div class="line">define(function(require) &#123;</div><div class="line">    var $ = require(&apos;jquery&apos;);</div><div class="line">    $(&apos;body&apos;).text(&apos;hello world&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/03/studywebpack5/" class="archive-article-date">
+  	<time datetime="2016-12-03T01:27:21.620Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-03</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/05/learnnpm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          npm常遇到的几个坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/02/studywebpack3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WebPack学习笔记（三）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+<div class="share_addthis share_jia">
+  <div class="sharing addthis_toolbox share">
+  	<span class="jiathis_txt">Share to: &nbsp; </span>
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="studywebpack5" data-title="WebPack学习笔记（五）" data-url="http://yoursite.com/2016/12/03/studywebpack5/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"westfive"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 West13
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://westfive.github.com">Design By West13</a>
+      	</div>
+    </div>
+  </div>
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    </div>
+    
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.hurtdays.com">Hurt</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">有家的流浪汉&lt;br&gt;&lt;br&gt;醒着的活死人&lt;br&gt;请折叠，谢谢合作。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
