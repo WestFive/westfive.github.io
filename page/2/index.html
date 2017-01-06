@@ -157,6 +157,66 @@
       <div class="body-wrap">
         
   
+    <article id="post-studywebpack3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/02/studywebpack3/">WebPack学习笔记（三）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/what-is-webpack.png" alt=""><br><strong>配置文件</strong></p>
+<p>Webpack 在执行的时候，除了在命令行传入参数，还可以通过指定的配置文件来执行。<br>默认情况下，会搜索当前目录的 webpack.config.js 文件，<br>这个文件是一个 node.js 模块，返回一个 json 格式的配置信息对象，<br>或者通过 –config 选项来指定配置文件。<br>继续我们的案例，在根目录创建 package.json 来添加 webpack 需要的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;webpack-example&quot;,</div><div class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</div><div class="line">  &quot;description&quot;: &quot;A simple webpack example.&quot;,</div><div class="line">  &quot;main&quot;: &quot;bundle.js&quot;,</div><div class="line">  &quot;scripts&quot;: &#123;</div><div class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;keywords&quot;: [</div><div class="line">    &quot;webpack&quot;</div><div class="line">  ],</div><div class="line">  &quot;author&quot;: &quot;zhaoda&quot;,</div><div class="line">  &quot;license&quot;: &quot;MIT&quot;,</div><div class="line">  &quot;devDependencies&quot;: &#123;</div><div class="line">    &quot;css-loader&quot;: &quot;^0.21.0&quot;,</div><div class="line">    &quot;style-loader&quot;: &quot;^0.13.0&quot;,</div><div class="line">    &quot;webpack&quot;: &quot;^1.12.2&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="如果没有写入权限，请尝试如下代码更改权限"><a href="#如果没有写入权限，请尝试如下代码更改权限" class="headerlink" title="如果没有写入权限，请尝试如下代码更改权限"></a>如果没有写入权限，请尝试如下代码更改权限</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chflags -R nouchg .</div><div class="line">sudo chmod  775 package.json</div><div class="line">别忘了运行 npm install。</div></pre></td></tr></table></figure>
+<p>然后创建一个配置文件 webpack.config.js：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var webpack = require(&apos;webpack&apos;)</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &apos;./entry.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname,</div><div class="line">    filename: &apos;bundle.js&apos;</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader: &apos;style!css&apos;&#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同时简化 <code>entry.js</code>中的 <code>style.css</code> 加载方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">require(&apos;./style.css&apos;)</div></pre></td></tr></table></figure>
+<p>最后运行 webpack，<br>可以看到 webpack 通过配置文件执行的结果和上一章节通过命令行<br>webpack entry.js bundle.js –module-bind ‘css=style!css’<br> 执行的结果是一样的。</p>
+<p> <strong>插件</strong></p>
+<p>插件可以完成更多 loader 不能完成的功能。</p>
+<p>插件的使用一般是在 webpack 的配置信息 plugins 选项中指定。</p>
+<p>Webpack 本身内置了一些常用的插件，还可以通过 npm 安装第三方插件。</p>
+<p>接下来，我们利用一个最简单的 BannerPlugin 内置插件来实践插件的配置和运行，这个插件的作用是给输出的文件头部添加注释信息。</p>
+<p>修改 webpack.config.js，添加 plugins：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var webpack = require(&apos;webpack&apos;)</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: &apos;./entry.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    path: __dirname,</div><div class="line">    filename: &apos;bundle.js&apos;</div><div class="line">  &#125;,</div><div class="line">  module: &#123;</div><div class="line">    loaders: [</div><div class="line">      &#123;test: /\.css$/, loader: &apos;style!css&apos;&#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new webpack.BannerPlugin(&apos;This file is created by zhaoda&apos;)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后运行 webpack，打开 bundle.js，可以看到文件头部出现了我们指定的注释信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/*! This file is created by west13 */</div><div class="line">/******/ (function(modules) &#123; // webpackBootstrap</div><div class="line">/******/  // The module cache</div><div class="line">/******/  var installedModules = &#123;&#125;;</div><div class="line">// 后面代码省略</div></pre></td></tr></table></figure></p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/02/studywebpack3/" class="archive-article-date">
+  	<time datetime="2016-12-02T09:18:01.667Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-02</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-studywebpack4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -640,7 +700,7 @@ ebpack 会给每个模块分配一个唯一的 id 并通过这个 id 索引和�
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2016 West13
+    		&copy; 2017 West13
     	</div>
       	<div class="footer-right">
       		<a href="http://westfive.github.com">Design By West13</a>
