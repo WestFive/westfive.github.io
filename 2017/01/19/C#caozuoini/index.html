@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>应用程序配置 | 西十三的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="C# ini文件操作
+ *来源:http://www.cnblogs.com/polk6/p/6052908.html
+介绍C#如何对ini文件进行读写操作，C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()和GetPrivateProfileString()函数分别对ini文件进行读和写操作。包括：读取key的值、保存key的值、读取所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="应用程序配置">
+<meta property="og:url" content="http://yoursite.com/2017/01/19/C#caozuoini/index.html">
+<meta property="og:site_name" content="西十三的Blog">
+<meta property="og:description" content="C# ini文件操作
+ *来源:http://www.cnblogs.com/polk6/p/6052908.html
+介绍C#如何对ini文件进行读写操作，C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()和GetPrivateProfileString()函数分别对ini文件进行读和写操作。包括：读取key的值、保存key的值、读取所">
+<meta property="og:image" content="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/153475/201611/153475-20161112170846780-595289799.png">
+<meta property="og:updated_time" content="2017-01-19T07:53:19.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="应用程序配置">
+<meta name="twitter:description" content="C# ini文件操作
+ *来源:http://www.cnblogs.com/polk6/p/6052908.html
+介绍C#如何对ini文件进行读写操作，C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()和GetPrivateProfileString()函数分别对ini文件进行读和写操作。包括：读取key的值、保存key的值、读取所">
+<meta name="twitter:image" content="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="西十三的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      
+<div class="overlay"></div>
+ <img src="http://ohe5u4k9s.bkt.clouddn.com/528865142354925.jpg" width="400px" height="180px" />
+<div class="intrude-less">	  
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+			
+		</a> 
+		<hgroup>
+		  <h1 class="header-author"><a href="/">WestFive13</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Everybody Hurts.</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives/">所有博文</a></li>
+	        
+				<li><a href="/Pages/Map.html">我在</a></li>
+	        
+				<li><a href="/Pages/Yaxin.html">你的名字</a></li>
+	        
+				<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+		
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">WestFive13</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">WestFive13</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Everybody Hurts.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有博文</a></li>
+		        
+					<li><a href="/Pages/Map.html">我在</a></li>
+		        
+					<li><a href="/Pages/Yaxin.html">你的名字</a></li>
+		        
+					<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-C#caozuoini" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      应用程序配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
+<p><strong>C# ini文件操作</strong></p>
+<p> *来源:<a href="http://www.cnblogs.com/polk6/p/6052908.html" target="_blank" rel="external">http://www.cnblogs.com/polk6/p/6052908.html</a></p>
+<p>介绍C#如何对ini文件进行读写操作，C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()和GetPrivateProfileString()函数分别对ini文件进行读和写操作。包括：读取key的值、保存key的值、读取所有section、读取所有key、移除section、移除key等操作。<em><br><em>*目录</em></em></p>
+<ol>
+<li><p>ini文件介绍</p>
+</li>
+<li><p>读取操作：包括读取key的值、读取所有section、读取所有key等操作。</p>
+</li>
+<li><p>写入操作： 包括保存key的值、移除section、移除key等操作。</p>
+</li>
+<li><p>源码下载：展示运行图及源码下载</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1. ini文件介绍</div><div class="line">ini文件常用于存储各类应用的配置信息，而内部的文件结构主要包括三个概念：section、key和value。</div><div class="line"></div><div class="line">其中section为各独立的区域块，名称可以为英文、中文。</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">C#可以通过调用【kernel32.dll】文件中的 GetPrivateProfileString()函数对ini文件进行读取操作。</div><div class="line"></div><div class="line">官方API：https://msdn.microsoft.com/zh-cn/library/ms724353.aspx</div><div class="line"></div><div class="line">函数签名：</div><div class="line">&gt;&gt;[DllImport(&quot;kernel32&quot;)]</div><div class="line">&gt;&gt;private static extern int GetPrivateProfileString(string sectionName, string key, string defaultValue, byte[] returnBuffer, int size, string filePath);　</div><div class="line"></div><div class="line">成员：</div><div class="line"></div><div class="line">sectionName  &#123;string | null&#125;：要读区的区域名。若传入null值，第4个参数returnBuffer将会获得所有的section name。</div><div class="line"></div><div class="line">key &#123;string | null&#125;：key的名称。若传入null值，第4个参数returnBuffer将会获得所有的指定sectionName下的所有key name。</div><div class="line"></div><div class="line">defaultValue &#123;string&#125;：key没找到时的返回值。</div><div class="line"></div><div class="line">returnBuffer &#123;byte[]&#125;：key所对应的值。</div><div class="line"></div><div class="line">filePath &#123;string&#125;：ini文件路径。</div><div class="line"></div><div class="line">支持的操作：</div><div class="line"></div><div class="line">1) 获取指定key的值。</div><div class="line"></div><div class="line">2) 获取ini文件所有的section名称。</div><div class="line"></div><div class="line">3) 获取指定section下的所有key名称。</div></pre></td></tr></table></figure>
+<p><strong>获取指定key的值</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 根据Key读取Value</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;key&quot;&gt;key的名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">public static string GetValue(string sectionName, string key, string filePath)</div><div class="line">&#123;</div><div class="line">    byte[] buffer = new byte[2048];</div><div class="line">    int length = GetPrivateProfileString(sectionName, key, &quot;发生错误&quot;, buffer,999, filePath);</div><div class="line">    string rs = System.Text.UTF8Encoding.Default.GetString(buffer, 0, length);</div><div class="line">    return rs;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.2 获取INI文件中所有的section名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 获取ini文件内所有的section名称</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;返回一个包含section名称的集合&lt;/returns&gt;</div><div class="line">public static List&lt;string&gt; GetSectionNames(string filePath)</div><div class="line">&#123;</div><div class="line">    byte[] buffer = new byte[2048];</div><div class="line">    int length = GetPrivateProfileString(null, &quot;&quot;, &quot;&quot;, buffer, 999, filePath);</div><div class="line">    String[] rs = System.Text.UTF8Encoding.Default.GetString(buffer, 0, length).Split(new string[] &#123; &quot;\0&quot; &#125;,StringSplitOptions.RemoveEmptyEntries);</div><div class="line">    return rs.ToList();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.3 获取指定section下的所有key名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 获取指定section内的所有key</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;返回一个包含key名称的集合&lt;/returns&gt;</div><div class="line">public static List&lt;string&gt; GetKeys(string sectionName, string filePath)</div><div class="line">&#123;</div><div class="line">    byte[] buffer = new byte[2048];</div><div class="line">    int length = GetPrivateProfileString(sectionName,null,&quot;&quot;, buffer, 999, filePath);</div><div class="line">    String[] rs = System.Text.UTF8Encoding.Default.GetString(buffer, 0, length).Split(new string[] &#123; &quot;\0&quot; &#125;, StringSplitOptions.RemoveEmptyEntries);</div><div class="line">    return rs.ToList();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>WritePrivateProfileString()函数：写入操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()函数对ini文件进行写入操作。</div><div class="line"></div><div class="line">官方API：https://msdn.microsoft.com/zh-cn/library/ms725501.aspx</div><div class="line"></div><div class="line">函数签名：</div><div class="line">&gt;&gt;[DllImport(&quot;kernel32&quot;)]</div><div class="line">&gt;&gt;private static extern long WritePrivateProfileString(string sectionName, string key, string value, string filePath);</div><div class="line">成员：</div><div class="line"></div><div class="line">sectionName &#123;string&#125;：要写入的区域名。</div><div class="line"></div><div class="line">key &#123;string | null&#125;：key的名称。若传入null值，将移除指定的section。</div><div class="line"></div><div class="line">value &#123;string | null&#125;：设置key所对应的值。若传入null值，将移除指定的key。</div><div class="line"></div><div class="line">filePath &#123;string&#125;：ini文件路径。</div><div class="line"></div><div class="line">支持的操作：</div><div class="line"></div><div class="line">1) 创建/设置key的值。</div><div class="line"></div><div class="line">2) 移除指定的section。</div><div class="line"></div><div class="line">3) 移除指定的key。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.1 创建/设置key的值<br>注意：若此key不存在将会创建，否则就为修改此key的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 保存内容到ini文件</div><div class="line">/// &lt;para&gt;若存在相同的key，就覆盖，否则就增加&lt;/para&gt;</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;key&quot;&gt;key的名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;value&quot;&gt;存储的值&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">public static bool SetValue(string sectionName, string key, string value, string filePath)</div><div class="line">&#123;</div><div class="line">    int rs = (int)WritePrivateProfileString(sectionName, key, value, filePath);</div><div class="line">    return rs &gt; 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.2 移除指定的section<br>说明：key参数传入null就为移除指定的section。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 移除指定的section</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">public static bool RemoveSection(string sectionName, string filePath)</div><div class="line">&#123;</div><div class="line">    int rs = (int)WritePrivateProfileString(sectionName, null, &quot;&quot;, filePath);</div><div class="line">    return rs &gt; 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.3 移除指定的key<br>说明：value参数传入null就为移除指定的key。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 移除指定的key</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">public static bool Removekey(string sectionName, string key, string filePath)</div><div class="line">&#123;</div><div class="line">    int rs = (int)WritePrivateProfileString(sectionName, key, null, filePath);</div><div class="line">    return rs &gt; 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://images2015.cnblogs.com/blog/153475/201611/153475-20161112170846780-595289799.png" alt=""></p>
+<p><em>附：  propertyGrid控件绑定</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">  propertyGrid1.SelectedObject = obj;</div><div class="line"></div><div class="line"></div><div class="line">[DefaultPropertyAttribute(&quot;配置&quot;)]</div><div class="line">    public class Config</div><div class="line">    &#123;</div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 软件设置</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        private string tcpport;</div><div class="line">        private string ftpuserName;</div><div class="line">        private string ftppassWord;</div><div class="line">        private string ftpinway;</div><div class="line">        private string ftpoutway;</div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 软件设置项</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        private string name;//设置示例</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        [DisplayName(&quot;姓名&quot;)]</div><div class="line">        [BrowsableAttribute(true)]</div><div class="line">        [CategoryAttribute(&quot;模块&quot;), DescriptionAttribute(&quot;说明&quot;)]</div><div class="line">        public string Name</div><div class="line">        &#123;</div><div class="line">            get</div><div class="line">            &#123;</div><div class="line">                return name;</div><div class="line">            &#125;</div><div class="line">            set</div><div class="line">            &#123;</div><div class="line">                name = value;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>  End.</p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/01/19/C#caozuoini/" class="archive-article-date">
+  	<time datetime="2017-01-19T07:44:34.517Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-19</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/16/qianduan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">01.16记录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+<div class="share_addthis share_jia">
+  <div class="sharing addthis_toolbox share">
+  	<span class="jiathis_txt">Share to: &nbsp; </span>
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="C#caozuoini" data-title="应用程序配置" data-url="http://yoursite.com/2017/01/19/C#caozuoini/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"westfive"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 West13
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://westfive.github.com">Design By West13</a>
+      	</div>
+    </div>
+  </div>
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    </div>
+    
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://aisijimo.ren">贱刘的博客</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">有家的流浪汉&lt;br&gt;&lt;br&gt;醒着的活死人&lt;br&gt;请折叠，谢谢合作。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

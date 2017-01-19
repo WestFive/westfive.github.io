@@ -149,6 +149,82 @@
       <div class="body-wrap">
         
   
+    <article id="post-C#caozuoini" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/19/C#caozuoini/">应用程序配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
+<p><strong>C# ini文件操作</strong></p>
+<p> *来源:<a href="http://www.cnblogs.com/polk6/p/6052908.html" target="_blank" rel="external">http://www.cnblogs.com/polk6/p/6052908.html</a></p>
+<p>介绍C#如何对ini文件进行读写操作，C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()和GetPrivateProfileString()函数分别对ini文件进行读和写操作。包括：读取key的值、保存key的值、读取所有section、读取所有key、移除section、移除key等操作。<em><br><em>*目录</em></em></p>
+<ol>
+<li><p>ini文件介绍</p>
+</li>
+<li><p>读取操作：包括读取key的值、读取所有section、读取所有key等操作。</p>
+</li>
+<li><p>写入操作： 包括保存key的值、移除section、移除key等操作。</p>
+</li>
+<li><p>源码下载：展示运行图及源码下载</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1. ini文件介绍</div><div class="line">ini文件常用于存储各类应用的配置信息，而内部的文件结构主要包括三个概念：section、key和value。</div><div class="line"></div><div class="line">其中section为各独立的区域块，名称可以为英文、中文。</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">C#可以通过调用【kernel32.dll】文件中的 GetPrivateProfileString()函数对ini文件进行读取操作。</div><div class="line"></div><div class="line">官方API：https://msdn.microsoft.com/zh-cn/library/ms724353.aspx</div><div class="line"></div><div class="line">函数签名：</div><div class="line">&gt;&gt;[DllImport(&quot;kernel32&quot;)]</div><div class="line">&gt;&gt;private static extern int GetPrivateProfileString(string sectionName, string key, string defaultValue, byte[] returnBuffer, int size, string filePath);　</div><div class="line"></div><div class="line">成员：</div><div class="line"></div><div class="line">sectionName  &#123;string | null&#125;：要读区的区域名。若传入null值，第4个参数returnBuffer将会获得所有的section name。</div><div class="line"></div><div class="line">key &#123;string | null&#125;：key的名称。若传入null值，第4个参数returnBuffer将会获得所有的指定sectionName下的所有key name。</div><div class="line"></div><div class="line">defaultValue &#123;string&#125;：key没找到时的返回值。</div><div class="line"></div><div class="line">returnBuffer &#123;byte[]&#125;：key所对应的值。</div><div class="line"></div><div class="line">filePath &#123;string&#125;：ini文件路径。</div><div class="line"></div><div class="line">支持的操作：</div><div class="line"></div><div class="line">1) 获取指定key的值。</div><div class="line"></div><div class="line">2) 获取ini文件所有的section名称。</div><div class="line"></div><div class="line">3) 获取指定section下的所有key名称。</div></pre></td></tr></table></figure>
+<p><strong>获取指定key的值</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 根据Key读取Value</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;key&quot;&gt;key的名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">public static string GetValue(string sectionName, string key, string filePath)</div><div class="line">&#123;</div><div class="line">    byte[] buffer = new byte[2048];</div><div class="line">    int length = GetPrivateProfileString(sectionName, key, &quot;发生错误&quot;, buffer,999, filePath);</div><div class="line">    string rs = System.Text.UTF8Encoding.Default.GetString(buffer, 0, length);</div><div class="line">    return rs;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.2 获取INI文件中所有的section名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 获取ini文件内所有的section名称</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;返回一个包含section名称的集合&lt;/returns&gt;</div><div class="line">public static List&lt;string&gt; GetSectionNames(string filePath)</div><div class="line">&#123;</div><div class="line">    byte[] buffer = new byte[2048];</div><div class="line">    int length = GetPrivateProfileString(null, &quot;&quot;, &quot;&quot;, buffer, 999, filePath);</div><div class="line">    String[] rs = System.Text.UTF8Encoding.Default.GetString(buffer, 0, length).Split(new string[] &#123; &quot;\0&quot; &#125;,StringSplitOptions.RemoveEmptyEntries);</div><div class="line">    return rs.ToList();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.3 获取指定section下的所有key名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 获取指定section内的所有key</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;返回一个包含key名称的集合&lt;/returns&gt;</div><div class="line">public static List&lt;string&gt; GetKeys(string sectionName, string filePath)</div><div class="line">&#123;</div><div class="line">    byte[] buffer = new byte[2048];</div><div class="line">    int length = GetPrivateProfileString(sectionName,null,&quot;&quot;, buffer, 999, filePath);</div><div class="line">    String[] rs = System.Text.UTF8Encoding.Default.GetString(buffer, 0, length).Split(new string[] &#123; &quot;\0&quot; &#125;, StringSplitOptions.RemoveEmptyEntries);</div><div class="line">    return rs.ToList();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>WritePrivateProfileString()函数：写入操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">C#可以通过调用【kernel32.dll】文件中的 WritePrivateProfileString()函数对ini文件进行写入操作。</div><div class="line"></div><div class="line">官方API：https://msdn.microsoft.com/zh-cn/library/ms725501.aspx</div><div class="line"></div><div class="line">函数签名：</div><div class="line">&gt;&gt;[DllImport(&quot;kernel32&quot;)]</div><div class="line">&gt;&gt;private static extern long WritePrivateProfileString(string sectionName, string key, string value, string filePath);</div><div class="line">成员：</div><div class="line"></div><div class="line">sectionName &#123;string&#125;：要写入的区域名。</div><div class="line"></div><div class="line">key &#123;string | null&#125;：key的名称。若传入null值，将移除指定的section。</div><div class="line"></div><div class="line">value &#123;string | null&#125;：设置key所对应的值。若传入null值，将移除指定的key。</div><div class="line"></div><div class="line">filePath &#123;string&#125;：ini文件路径。</div><div class="line"></div><div class="line">支持的操作：</div><div class="line"></div><div class="line">1) 创建/设置key的值。</div><div class="line"></div><div class="line">2) 移除指定的section。</div><div class="line"></div><div class="line">3) 移除指定的key。</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>3.1 创建/设置key的值<br>注意：若此key不存在将会创建，否则就为修改此key的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 保存内容到ini文件</div><div class="line">/// &lt;para&gt;若存在相同的key，就覆盖，否则就增加&lt;/para&gt;</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;key&quot;&gt;key的名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;value&quot;&gt;存储的值&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">public static bool SetValue(string sectionName, string key, string value, string filePath)</div><div class="line">&#123;</div><div class="line">    int rs = (int)WritePrivateProfileString(sectionName, key, value, filePath);</div><div class="line">    return rs &gt; 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.2 移除指定的section<br>说明：key参数传入null就为移除指定的section。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 移除指定的section</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">public static bool RemoveSection(string sectionName, string filePath)</div><div class="line">&#123;</div><div class="line">    int rs = (int)WritePrivateProfileString(sectionName, null, &quot;&quot;, filePath);</div><div class="line">    return rs &gt; 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.3 移除指定的key<br>说明：value参数传入null就为移除指定的key。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/// &lt;summary&gt;</div><div class="line">/// 移除指定的key</div><div class="line">/// &lt;/summary&gt;</div><div class="line">/// &lt;param name=&quot;sectionName&quot;&gt;section名称&lt;/param&gt;</div><div class="line">/// &lt;param name=&quot;filePath&quot;&gt;文件路径&lt;/param&gt;</div><div class="line">/// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">public static bool Removekey(string sectionName, string key, string filePath)</div><div class="line">&#123;</div><div class="line">    int rs = (int)WritePrivateProfileString(sectionName, key, null, filePath);</div><div class="line">    return rs &gt; 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://images2015.cnblogs.com/blog/153475/201611/153475-20161112170846780-595289799.png" alt=""></p>
+<p><em>附：  propertyGrid控件绑定</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">  propertyGrid1.SelectedObject = obj;</div><div class="line"></div><div class="line"></div><div class="line">[DefaultPropertyAttribute(&quot;配置&quot;)]</div><div class="line">    public class Config</div><div class="line">    &#123;</div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 软件设置</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        private string tcpport;</div><div class="line">        private string ftpuserName;</div><div class="line">        private string ftppassWord;</div><div class="line">        private string ftpinway;</div><div class="line">        private string ftpoutway;</div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 软件设置项</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        private string name;//设置示例</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        [DisplayName(&quot;姓名&quot;)]</div><div class="line">        [BrowsableAttribute(true)]</div><div class="line">        [CategoryAttribute(&quot;模块&quot;), DescriptionAttribute(&quot;说明&quot;)]</div><div class="line">        public string Name</div><div class="line">        &#123;</div><div class="line">            get</div><div class="line">            &#123;</div><div class="line">                return name;</div><div class="line">            &#125;</div><div class="line">            set</div><div class="line">            &#123;</div><div class="line">                name = value;</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>  End.</p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/01/19/C#caozuoini/" class="archive-article-date">
+  	<time datetime="2017-01-19T07:44:34.517Z" itemprop="datePublished"><i class="icon-clock"></i>2017-01-19</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-qianduan" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -603,76 +679,6 @@
       
       <a href="/2016/12/06/winform/" class="archive-article-date">
   	<time datetime="2016-12-06T06:27:49.200Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-06</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-learnnpm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/05/learnnpm/">npm常遇到的几个坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/u=4151515598,4093873234&amp;fm=21&amp;gp=0.jpg" alt=""></p>
-<p><strong>npm安装</strong></p>
-<p>NPM是随同NodeJS一起安装的包管理工具，能解决NodeJS代码部署上的很多问题，常见的使用场景有以下几种：<br>允许用户从NPM服务器下载别人编写的第三方包到本地使用。<br>允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。<br>允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。<br>由于新版的nodejs已经集成了npm，所以之前npm也一并安装好了。同样可以通过输入 “npm -v” 来测试是否成功安装。命令如下，出现版本提示表示安装成功: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm -v</div><div class="line">2.3.0</div></pre></td></tr></table></figure>
-<p>如果你安装的是旧版本的 npm，可以很容易得通过 npm 命令来升级，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo npm install npm -g</div><div class="line">/usr/local/bin/npm -&gt; /usr/local/lib/node_modules/npm/bin/npm-cli.js</div><div class="line">npm@2.14.2 /usr/local/lib/node_modules/npm</div></pre></td></tr></table></figure></p>
-<p>如果是 Window 系统使用以下命令即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm -g</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这里有一个大坑<br>我用cnpm install -g npm升级了npm之后，使用npm -v显示版本为2.11.2<br>然而我安装yoeman的时候，它提示我的npm版本过低，是2.7.6，请问这是怎么回事呢？</p>
-</blockquote>
-<p>解决方案：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">复制AppData\Roaming\npm\node_modules\npm下的文件到你的NodeJS安装目录下的 \node_modules\npm 中，覆盖掉原来的全部文件。</div></pre></td></tr></table></figure></p>
-<p><strong>使用cnpm和snpm</strong></p>
-<blockquote>
-<p>为什么要使用CNPM#<br>在我们中国，要下载 npm 包非常慢，如果使用 cnpm 下载包就非常快了，感觉很爽，但是 cnpm 也有几个大问题：</p>
-</blockquote>
-<p>1.cnpm 的仓库只是 npm 仓库的一个拷贝，它不承担 publish 工作，所以你用 cnpm publish 命令会执行失败的</p>
-<p>2.不仅是 publish 会执行失败，其它的需要注册用户(npm adduser)、或者修改 package 状态等命令都无法用 cnpm</p>
-<p>3.有很多 npm 包都集成了 npm install，比如 yeoman 的所有 generators ，在最后基本都会调用 npm install，（ 可以看其源码 ）这种情况下使用 cnpm 完全无效，必须中断操作，然后自己手动运行 cnpm install，或者在运行 yo [generator] 时就指定 –skip-install，这体验就很不爽了</p>
-<p>4.还有一种情况是，很多和 npm API 相关的 package，都会读取 ~/.npmrc 中的 registry，或者使用默认的 registry —— [<a href="https://registry.npmjs.org/][npm-registry]，去查询" target="_blank" rel="external">https://registry.npmjs.org/][npm-registry]，去查询</a> npm package 相关的信息，比如下面这些：</p>
-<p>npm-latest: 查询某个 package 的最新版本号<br>npm-name: 查询某个 package name 是否被注册了<br>npm-dependents: 查找某个模块所依赖的其它所有模块<br>…<br>如果你用的任何一个包或其所依赖的包中用了这些 package，那么在这些包请求网络时也得慢死了！</p>
-<blockquote>
-<p>来使用snpm吧<br><a href="https://github.com/WestFive/smart-npm" target="_blank" rel="external">SnpmGithub</a><br><strong>安装</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --global smart-npm --registry=https://registry.npm.taobao.org/</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>安装成功后默认会在你的 npm 用户配置文件 ~/.npmrc 中添加淘宝的 registry。<br><strong>替换原始npm命令</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Window 用户需要先定位到 npm.cmd 和 smart-npm.cmd 两个文件，然后用 smart-npm.cmd 替换 npm.cmd（注意备份原来的 npm.cmd），</div><div class="line">同时注意修改下 smart-npm.cmd 文件里的路径，否则运行 npm 会报找不到文件错误（如果不明白，建议不要替换，直接使用 snpm 或 smart-npm）</div><div class="line">可以使用命令 where smart-npm 来定位到 smart-npm.cmd 文件所在的位置。如：在我的系统上执行 where smart-npm 的结果是：</div><div class="line"></div><div class="line">C:\Users\Mora&gt;where smart-npm</div><div class="line">C:\Program Files\nodejs\smart-npm</div><div class="line">C:\Program Files\nodejs\smart-npm.cmd</div></pre></td></tr></table></figure></p>
-<p>Just Use It ..<br>如果有疑问，请<a href="https://github.com/WestFive/smart-npm" target="_blank" rel="external">SnpmGithub</a></p>
-<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
-<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/05/learnnpm/" class="archive-article-date">
-  	<time datetime="2016-12-05T02:26:15.721Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-05</time>
 </a>
       
       
