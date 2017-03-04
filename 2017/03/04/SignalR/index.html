@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Signal以控制台作为宿主无需IIS。 | 西十三的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="控制台宿主
+1.引入NuGut包Microsoft.AspNet.Signal.Hubs2.引入跨域包Microsoft.Owim.Cors3.引入Host包Microsoft.AspNet.SignalR.SelfHost
+Code1234567891011121314class Program   &amp;#123;       static void Main(string[] args)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Signal以控制台作为宿主无需IIS。">
+<meta property="og:url" content="http://yoursite.com/2017/03/04/SignalR/index.html">
+<meta property="og:site_name" content="西十三的Blog">
+<meta property="og:description" content="控制台宿主
+1.引入NuGut包Microsoft.AspNet.Signal.Hubs2.引入跨域包Microsoft.Owim.Cors3.引入Host包Microsoft.AspNet.SignalR.SelfHost
+Code1234567891011121314class Program   &amp;#123;       static void Main(string[] args)">
+<meta property="og:image" content="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg">
+<meta property="og:updated_time" content="2017-03-04T02:51:09.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Signal以控制台作为宿主无需IIS。">
+<meta name="twitter:description" content="控制台宿主
+1.引入NuGut包Microsoft.AspNet.Signal.Hubs2.引入跨域包Microsoft.Owim.Cors3.引入Host包Microsoft.AspNet.SignalR.SelfHost
+Code1234567891011121314class Program   &amp;#123;       static void Main(string[] args)">
+<meta name="twitter:image" content="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="西十三的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      
+<div class="overlay"></div>
+ <img src="http://ohe5u4k9s.bkt.clouddn.com/528865142354925.jpg" width="400px" height="180px" />
+<div class="intrude-less">	  
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+			
+		</a> 
+		<hgroup>
+		  <h1 class="header-author"><a href="/">WestFive13</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Everybody Hurts.</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives/">所有博文</a></li>
+	        
+				<li><a href="/Pages/Map.html">我在</a></li>
+	        
+				<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+		
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">WestFive13</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">WestFive13</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Everybody Hurts.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有博文</a></li>
+		        
+					<li><a href="/Pages/Map.html">我在</a></li>
+		        
+					<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-SignalR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Signal以控制台作为宿主无需IIS。
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
+<p><strong>控制台宿主</strong></p>
+<p>1.引入NuGut包<br>Microsoft.AspNet.Signal.Hubs<br>2.引入跨域包<br>Microsoft.Owim.Cors<br>3.引入Host包<br>Microsoft.AspNet.SignalR.SelfHost</p>
+<p><strong>Code</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Program</div><div class="line">   &#123;</div><div class="line">       static void Main(string[] args)</div><div class="line">       &#123;</div><div class="line">           string url = &quot;http://localhost:8080&quot;;</div><div class="line">           using (WebApp.Start(url))</div><div class="line">           &#123;</div><div class="line">               Console.WriteLine(&quot;服务开启成功：请勿关闭此窗口。地址&#123;0&#125;&quot;, url);</div><div class="line">               Console.ReadLine();</div><div class="line">           &#125;</div><div class="line"></div><div class="line"></div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p> StartUpclass :<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    public void Configuration(IAppBuilder app)</div><div class="line">    &#123;</div><div class="line">        // 有关如何配置应用程序的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=316888</div><div class="line"></div><div class="line">        app.UseCors(CorsOptions.AllowAll);//跨域</div><div class="line">        app.MapSignalR();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Hub就随便写了<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class CenterHub : Hub</div><div class="line">  &#123;</div><div class="line">      public void Hello()</div><div class="line">      &#123;</div><div class="line">        clients.All.GetHello(&quot;HELLO BAD&quot;);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      //public override   重写连接和断开连接的方法。</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p> 客户端调用如下 以winform举例<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">全局变量：</div><div class="line">        IHubProxy hub = null;</div><div class="line">        HubConnection conncetion = null;</div><div class="line">        </div><div class="line"> private void Form1_Load(object sender, EventArgs e)</div><div class="line">        &#123;</div><div class="line">             conncetion = new HubConnection(&quot;http://localhost:8080&quot;);</div><div class="line">            hub = conncetion.CreateHubProxy(&quot;CenterHub&quot;);</div><div class="line"></div><div class="line">            conncetion.Start().Wait();</div><div class="line"></div><div class="line">            hub.On(&quot;GetHello&quot;,(data)=&gt;</div><div class="line">            &#123;</div><div class="line">                 Messagebox.Show(data);</div><div class="line">            &#125;);//注册事件监听。</div><div class="line"></div><div class="line">            hub.Invoke(&quot;Hello&quot;);//去调用服务端的事件</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>Everybody hurts.</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/03/04/SignalR/" class="archive-article-date">
+  	<time datetime="2017-03-04T02:42:19.319Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-04</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/22/signalR框架学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Signal搭建一个聊天室。</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+<div class="share_addthis share_jia">
+  <div class="sharing addthis_toolbox share">
+  	<span class="jiathis_txt">Share to: &nbsp; </span>
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SignalR" data-title="Signal以控制台作为宿主无需IIS。" data-url="http://yoursite.com/2017/03/04/SignalR/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"westfive"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 West13
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://westfive.github.com">Design By West13</a>
+      	</div>
+    </div>
+  </div>
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    </div>
+    
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://aisijimo.ren">贱刘的博客</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">有家的流浪汉&lt;br&gt;&lt;br&gt;醒着的活死人&lt;br&gt;请折叠，谢谢合作。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

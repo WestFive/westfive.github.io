@@ -145,6 +145,59 @@
       <div class="body-wrap">
         
   
+    <article id="post-SignalR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/04/SignalR/">Signal以控制台作为宿主无需IIS。</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
+<p><strong>控制台宿主</strong></p>
+<p>1.引入NuGut包<br>Microsoft.AspNet.Signal.Hubs<br>2.引入跨域包<br>Microsoft.Owim.Cors<br>3.引入Host包<br>Microsoft.AspNet.SignalR.SelfHost</p>
+<p><strong>Code</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">class Program</div><div class="line">   &#123;</div><div class="line">       static void Main(string[] args)</div><div class="line">       &#123;</div><div class="line">           string url = &quot;http://localhost:8080&quot;;</div><div class="line">           using (WebApp.Start(url))</div><div class="line">           &#123;</div><div class="line">               Console.WriteLine(&quot;服务开启成功：请勿关闭此窗口。地址&#123;0&#125;&quot;, url);</div><div class="line">               Console.ReadLine();</div><div class="line">           &#125;</div><div class="line"></div><div class="line"></div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p> StartUpclass :<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Startup</div><div class="line">&#123;</div><div class="line">    public void Configuration(IAppBuilder app)</div><div class="line">    &#123;</div><div class="line">        // 有关如何配置应用程序的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=316888</div><div class="line"></div><div class="line">        app.UseCors(CorsOptions.AllowAll);//跨域</div><div class="line">        app.MapSignalR();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Hub就随便写了<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class CenterHub : Hub</div><div class="line">  &#123;</div><div class="line">      public void Hello()</div><div class="line">      &#123;</div><div class="line">        clients.All.GetHello(&quot;HELLO BAD&quot;);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      //public override   重写连接和断开连接的方法。</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p> 客户端调用如下 以winform举例<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">全局变量：</div><div class="line">        IHubProxy hub = null;</div><div class="line">        HubConnection conncetion = null;</div><div class="line">        </div><div class="line"> private void Form1_Load(object sender, EventArgs e)</div><div class="line">        &#123;</div><div class="line">             conncetion = new HubConnection(&quot;http://localhost:8080&quot;);</div><div class="line">            hub = conncetion.CreateHubProxy(&quot;CenterHub&quot;);</div><div class="line"></div><div class="line">            conncetion.Start().Wait();</div><div class="line"></div><div class="line">            hub.On(&quot;GetHello&quot;,(data)=&gt;</div><div class="line">            &#123;</div><div class="line">                 Messagebox.Show(data);</div><div class="line">            &#125;);//注册事件监听。</div><div class="line"></div><div class="line">            hub.Invoke(&quot;Hello&quot;);//去调用服务端的事件</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>Everybody hurts.</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/03/04/SignalR/" class="archive-article-date">
+  	<time datetime="2017-03-04T02:42:19.319Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-04</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-signalR框架学习" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -638,57 +691,9 @@
 
 
   
-    <article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/09/node/">笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是一个笔记日志，评论记录。</div></pre></td></tr></table></figure>
-<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
-<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/12/09/node/" class="archive-article-date">
-  	<time datetime="2016-12-09T02:00:52.779Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-09</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

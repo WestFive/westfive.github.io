@@ -145,6 +145,54 @@
       <div class="body-wrap">
         
   
+    <article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/09/node/">笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">这是一个笔记日志，评论记录。</div></pre></td></tr></table></figure>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/09/node/" class="archive-article-date">
+  	<time datetime="2016-12-09T02:00:52.779Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-09</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-winform" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -763,62 +811,9 @@ ebpack 会给每个模块分配一个唯一的 id 并通过这个 id 索引和�
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/29/hello-world/">MyBlog</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://westfive.github.io/" target="_blank" rel="external">west13</a>!<br>以下：一些关于搭建Blog的文章</p>
-<h3 id="如何搭建一个独立博客——简明Github-Page与Hexo教程"><a href="#如何搭建一个独立博客——简明Github-Page与Hexo教程" class="headerlink" title="如何搭建一个独立博客——简明Github Page与Hexo教程"></a>如何搭建一个独立博客——简明Github Page与Hexo教程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">概要：</div><div class="line"><span class="variable">$git</span> checkout --orphan gh-pages</div><div class="line">在Git中，分支(branch)的概念非常重要，Git之所以强大，很大程度上就是因为它强大的分支体系。这里的分支名字必须是gh-pages，</div><div class="line">因为github规定，在项目类型的仓库中，只有该分支中的页面，才会生成网页文件。</div><div class="line"><span class="comment"># 将当前的改动暂存在本地仓库</span></div><div class="line">$ git add .</div><div class="line"><span class="comment"># 将暂存的改动提交到本地仓库，并写入本次提交的注释是”first post“</span></div><div class="line">$ git commit -m <span class="string">"first post"</span></div><div class="line"><span class="comment"># 将远程仓库在本地添加一个引用：origin</span></div><div class="line">$ git remote add origin https://github.com/username/projectName.git</div><div class="line"><span class="comment"># 向origin推送gh-pages分支，该命令将会将本地分支gh-pages推送到github的远程仓库，并在远程仓库创建一个同名的分支。该命令后会提示输入用户名和密码。</span></div><div class="line">$ git push origin gh-pages</div></pre></td></tr></table></figure>
-<p>更多信息: <a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">点我</a></p>
-<h3 id="手把手教你搭建一个博客"><a href="#手把手教你搭建一个博客" class="headerlink" title="手把手教你搭建一个博客"></a>手把手教你搭建一个博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">$ 摘要：</div><div class="line">$ hexo n == hexo new</div><div class="line">$ hexo g == hexo generate</div><div class="line">$ hexo s == hexo server</div><div class="line">$ hexo d == hexo deploy</div><div class="line">1 $ hexo d -g <span class="comment">#生成部署</span></div><div class="line">2 $ hexo s -g <span class="comment">#生成预览</span></div><div class="line">——————————————————————————————</div><div class="line"><span class="built_in">clone</span> github repo</div><div class="line">$ <span class="built_in">cd</span> d:/hexo/blog</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/jiji262/jiji262.github.io.git .deploy/jiji262.github.io</div><div class="line">将我们之前创建的repo克隆到本地，新建一个目录叫做.deploy用于存放克隆的代码。</div><div class="line">创建一个deploy脚本文件</div><div class="line">hexo generate</div><div class="line">cp -R public/* .deploy/jiji262.github.io</div><div class="line"><span class="built_in">cd</span> .deploy/jiji262.github.io</div><div class="line">git add .</div><div class="line">git commit -m “update”</div><div class="line">git push origin master</div><div class="line">简单解释一下，hexo generate生成public文件夹下的新内容，</div><div class="line">然后将其拷贝至jiji262.github.io的git目录下，</div><div class="line">然后使用git commit命令提交代码到jiji262.github.io这个repo的master branch上。</div><div class="line">需要部署的时候，执行这段脚本就可以了</div><div class="line">（比如可以将其保存为deploy.sh）。</div><div class="line">执行过程中可能需要让你输入Github账户的用户名及密码，按照提示操作即可。</div></pre></td></tr></table></figure>
-<p>更多信息: <a href="http://jiji262.github.io/2016/04/15/2016-04-15-hexo-github-pages-blog/" target="_blank" rel="external">点我</a></p>
-<h3 id="献给写作者的-Markdown-新手指南"><a href="#献给写作者的-Markdown-新手指南" class="headerlink" title="献给写作者的 Markdown 新手指南"></a>献给写作者的 Markdown 新手指南</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">在此，我们总结 Markdown 的优点如下：</div><div class="line"></div><div class="line">纯文本，所以兼容性极强，可以用所有文本编辑器打开。</div><div class="line">让你专注于文字而不是排版。</div><div class="line">格式转换方便，Markdown 的文本你可以轻松转换为 html、电子书等。</div><div class="line">Markdown 的标记语法有极好的可读性。</div><div class="line">当然，我们既然如此推崇 Markdown ，也必定会教会你使用 Markdown ，这也是本文的目的所在。不过，虽然 Markdown 的语法已经足够简单，但是现有的 Markdown 语法说明更多的是写给 web 从业者看的，对于很多写作者来说，学习起来效率很低，现在，我们特地为写作者量身定做本指南，从写作者的实际需求出发，介绍写作者真正实用的常用格式，深入浅出、图文并茂地让您迅速掌握 Markdown 语法。</div><div class="line"></div><div class="line">文／简书（简书作者）</div><div class="line">原文链接：http://www.jianshu.com/p/q81RER</div><div class="line">著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。</div></pre></td></tr></table></figure>
-<p>更多信息: <a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="external">点我</a></p>
-<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
-<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/29/hello-world/" class="archive-article-date">
-  	<time datetime="2016-11-29T02:09:31.158Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-29</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
