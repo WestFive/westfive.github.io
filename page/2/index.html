@@ -145,6 +145,59 @@
       <div class="body-wrap">
         
   
+    <article id="post-code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/13/code/">一段能用到老死的C#代码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg" alt=""></p>
+<p><strong>log</strong><br>使用方式<br>&gt;</p>
+<p>错误<br><code>catch(xception e)
+{
+    log.adderr(&quot;模块名&quot;+e);
+}</code><br>正常日志记录<br><code>log.addlog(&quot;内容&quot;);</code><br>在软件根目录生成log文件夹，以时间命名log文件。</p>
+<p><strong>代码</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div></pre></td><td class="code"><pre><div class="line">using System;</div><div class="line">using System.Collections.Generic;</div><div class="line">using System.IO;</div><div class="line">using System.Linq;</div><div class="line">using System.Text;</div><div class="line">using System.Threading.Tasks;</div><div class="line">using System.Windows.Forms;</div><div class="line"></div><div class="line">namespace PF_Rec.Lib</div><div class="line">&#123; /// &lt;summary&gt;</div><div class="line">    /// 日志</div><div class="line">    /// &lt;/summary&gt;</div><div class="line">    public class Log</div><div class="line">    &#123;</div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 路径</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        private string filePath;</div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 路径字段</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        public string FilePath</div><div class="line">        &#123;</div><div class="line">            get &#123; return filePath; &#125;</div><div class="line">            set &#123; filePath = value; &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 构造函数</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        /// &lt;param name=&quot;filepath&quot;&gt;&lt;/param&gt;</div><div class="line">        public Log(string filepath)</div><div class="line">        &#123;</div><div class="line">            this.FilePath = filePath;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 默认路径是文件开始路径</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        public Log()</div><div class="line">        &#123;</div><div class="line">            this.filePath = Application.StartupPath;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 追加到日志的方法。存在文件则追加，没有则创建并追加信息。</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        /// &lt;param name=&quot;message&quot;&gt;&lt;/param&gt;</div><div class="line">        /// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">        public string AddLogText(string message)</div><div class="line">        &#123;</div><div class="line">            HasLogDirectory();//先判断在路径文件夹下是否有LOG文件夹。</div><div class="line">            try</div><div class="line">            &#123;</div><div class="line">                if (!File.Exists(FilePath + @&quot;\LOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;)) //判断是否存在日志文件</div><div class="line">                &#123;</div><div class="line">                    FileStream fs1 = new FileStream(FilePath + @&quot;\LOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;, FileMode.Create, FileAccess.Write);//创建写入文件 </div><div class="line">                    StreamWriter sw = new StreamWriter(fs1);</div><div class="line">                    sw.WriteLine(DateTime.Now.ToString() + &quot;  &quot; + message);//开始写入值</div><div class="line">                    sw.Close();</div><div class="line">                    fs1.Close();</div><div class="line">                    return &quot;创建日志成功&quot;;</div><div class="line">                &#125;</div><div class="line">                else //存在则追加</div><div class="line">                &#123;</div><div class="line">                    FileStream fs = new FileStream(FilePath + @&quot;\LOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;, FileMode.Open, FileAccess.Write);</div><div class="line">                    StreamWriter sr = new StreamWriter(fs);</div><div class="line">                    sr.BaseStream.Seek(0, SeekOrigin.End);</div><div class="line">                    sr.WriteLine(DateTime.Now.ToString() + &quot;  &quot; + message);//开始写入值</div><div class="line">                    sr.Close();</div><div class="line">                    fs.Close();</div><div class="line">                    return &quot;追加到日志成功&quot;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            catch</div><div class="line">            &#123;</div><div class="line">                return &quot;追加到日志失败&quot;;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // return &quot;追加到日志成功&quot;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 异常信息追加到日志</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        /// &lt;param name=&quot;name&quot;&gt;异常模块名&lt;/param&gt;</div><div class="line">        /// &lt;param name=&quot;ex&quot;&gt;异常&lt;/param&gt;</div><div class="line">        public string AddErrorText(string name, Exception ex)</div><div class="line">        &#123;</div><div class="line"></div><div class="line">            StringBuilder sb = new StringBuilder();</div><div class="line">            sb.AppendLine(&quot;****************************异常文本****************************&quot;);</div><div class="line">            sb.AppendLine(&quot;【模块名称】：&quot; + name);</div><div class="line">            sb.AppendLine(&quot;【出现时间】：&quot; + DateTime.Now.ToString());</div><div class="line">            if (ex != null)</div><div class="line">            &#123;</div><div class="line">                sb.AppendLine(&quot;【异常类型】：&quot; + ex.GetType().Name);</div><div class="line">                sb.AppendLine(&quot;【异常信息】：&quot; + ex.Message);</div><div class="line">                sb.AppendLine(&quot;【堆栈调用】：&quot; + ex.StackTrace);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            sb.AppendLine(&quot;***************************************************************&quot;);</div><div class="line"></div><div class="line">            string message = sb.ToString();</div><div class="line">            HasErrorLogDirectory();//先判断在路径文件夹下是否有LOG文件夹。</div><div class="line">            try</div><div class="line">            &#123;</div><div class="line">                if (!File.Exists(FilePath + @&quot;\ERRORLOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;)) //判断是否存在日志文件</div><div class="line">                &#123;</div><div class="line">                    FileStream fs1 = new FileStream(FilePath + @&quot;\ERRORLOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;, FileMode.Create, FileAccess.Write);//创建写入文件 </div><div class="line">                    StreamWriter sw = new StreamWriter(fs1);</div><div class="line">                    sw.WriteLine(DateTime.Now.ToString() + &quot;  &quot; + message);//开始写入值</div><div class="line">                    sw.Close();</div><div class="line">                    fs1.Close();</div><div class="line">                    return &quot;创建日志成功&quot;;</div><div class="line">                &#125;</div><div class="line">                else //存在则追加</div><div class="line">                &#123;</div><div class="line">                    FileStream fs = new FileStream(FilePath + @&quot;\ERRORLOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;, FileMode.Open, FileAccess.Write);</div><div class="line">                    StreamWriter sr = new StreamWriter(fs);</div><div class="line">                    sr.BaseStream.Seek(0, SeekOrigin.End);</div><div class="line">                    sr.WriteLine(DateTime.Now.ToString() + &quot;  &quot; + message);//开始写入值</div><div class="line">                    sr.Close();</div><div class="line">                    fs.Close();</div><div class="line">                    return &quot;追加到日志成功&quot;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            catch</div><div class="line">            &#123;</div><div class="line">                return &quot;追加到日志失败&quot;;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        private void HasErrorLogDirectory()</div><div class="line">        &#123;</div><div class="line">            if (Directory.Exists(FilePath + @&quot;\ERRORLOG&quot;))</div><div class="line">            &#123;</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">                Directory.CreateDirectory(FilePath + @&quot;\ERRORLOG&quot;);</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 是否有日志文件夹 没有则创建</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        /// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">        public void HasLogDirectory()</div><div class="line">        &#123;</div><div class="line">            if (Directory.Exists(FilePath + @&quot;\LOG&quot;))</div><div class="line">            &#123;</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">            else</div><div class="line">            &#123;</div><div class="line">                Directory.CreateDirectory(FilePath + @&quot;\LOG&quot;);</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        /// &lt;summary&gt;</div><div class="line">        /// 读取日志最后一条文本</div><div class="line">        /// &lt;/summary&gt;</div><div class="line">        /// &lt;returns&gt;&lt;/returns&gt;</div><div class="line">        public string ReadLogLastLine()</div><div class="line">        &#123;</div><div class="line">            HasLogDirectory();//先判断在路径文件夹下是否有LOG文件夹。</div><div class="line"></div><div class="line">            if (File.Exists(FilePath + @&quot;\LOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;)) //判断是否存在日志文件</div><div class="line">            &#123;</div><div class="line">                StreamReader reader = new StreamReader(FilePath + @&quot;\LOG\&quot; + DateTime.Now.Date.ToString(&quot;yyyy-MM-dd&quot;) + &quot;.txt&quot;, Encoding.UTF8);</div><div class="line">                StringBuilder sb = new StringBuilder();</div><div class="line">                string line;</div><div class="line">                while ((line = reader.ReadLine()) != null)</div><div class="line">                &#123;</div><div class="line">                    sb.AppendFormat(line);</div><div class="line">                &#125;</div><div class="line">                return sb.ToString();</div><div class="line">            &#125;</div><div class="line">            else //存在则追加</div><div class="line">            &#123;</div><div class="line">                return &quot;日志不存在&quot;;</div><div class="line">                //嘎嘎嘎</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/13/code/" class="archive-article-date">
+  	<time datetime="2016-12-13T03:24:10.282Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-13</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-node" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -661,137 +714,6 @@ ebpack 会给每个模块分配一个唯一的 id 并通过这个 id 索引和�
       
       <a href="/2016/11/29/lovestory - 副本/" class="archive-article-date">
   	<time datetime="2016-11-29T09:45:44.685Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-29</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-lovestory" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/29/lovestory/">悲伤故事</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="悲伤的小故事"><a href="#悲伤的小故事" class="headerlink" title="悲伤的小故事"></a>悲伤的小故事</h3><p>作者：西十三<br><img src="http://ohe5u4k9s.bkt.clouddn.com/528865142354925.jpg" alt=""></p>
-<pre><code class="bash">1
-
-在我踏上向着居住地的地铁十分钟后，她上车了。
-
-坐在我对面。
-
-我该如何形容她。
-
-都市白领的打扮，白衬衫，阔腿裤，一副成功者的打扮。
-
-光从外表就能感觉迎面而来的一股英气，
-
-如果没有那副梨花带雨的泪脸的话。
-
-2
-
-我眼中的空气弥漫着悲伤的气息。
-
-一直以来，我都是一个能感受到别人悲伤的人。
-
-她只是闭着眼睛，凭涕泗流。
-
-偶尔的，看一下手机，回复着微信，像是在期待什么。
-
-继而又带出一丝没落。
-
-可是，即使你哭红了双眼，他能感觉到吗？
-
-3
-
-你们肯定曾经很幸福吧，
-
-不然现在怎么会那么悲伤。
-
-感情这东西，跟年纪无关的吧。
-
-情到深处真的难以自控。
-
-疼吗？我也疼。
-
-偏偏第二天还要伪装着一副若无其事的样子去上班。
-
-领导们下达的任务，你也只能面带微笑的回复“好的”。
-
-4
-
-累吗？
-
-很累吧。
-
-或许你只是希望一张大床，睡一觉。
-
-即使想着你们的过往，彻夜难眠。
-
-可是，总会睡去的吧。
-
-忙碌的工作可以让你不去想他，
-
-每天也只有入睡和醒来时两个时刻最难受。
-
-熬一熬，也就过去了。
-
-5
-
-总会过去的，就像这趟车，我不能陪着你直到终点站。
-
-我会在这里下车，你也总会在一站下车。
-
-相信我，没有什么过不去的。
-
-走过你身边的时候。
-
-我假装发了一条语音，大声的念叨。
-
-“就像一个苹果，内心已经腐烂不堪，可外表还是一如往常，可它毕竟坏了，坏了，就丢掉吧。”
-
-6
-
-很悲伤吧，很难熬吧。
-
-总会过去的。
-
-毕竟，我不会跟你说，我已经这样很久了。
-</code></pre>
-<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
-<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/11/29/lovestory/" class="archive-article-date">
-  	<time datetime="2016-11-29T07:44:58.883Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-29</time>
 </a>
       
       

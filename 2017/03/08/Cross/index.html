@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Signal+.netCore+Ubuntu实现跨平台的数据转发方案 | 西十三的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="实现效果如图123![](http://oion935wi.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170308174927.jpg)winform程序从ubuntu跑的服务中获取数据。
+实现方式记录相关：
+1 VS2017新建一个.netCore MvC项目123456引入Gray.Microsoft.AspNetCore.SignalR.Server Gr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Signal+.netCore+Ubuntu实现跨平台的数据转发方案">
+<meta property="og:url" content="http://yoursite.com/2017/03/08/Cross/index.html">
+<meta property="og:site_name" content="西十三的Blog">
+<meta property="og:description" content="实现效果如图123![](http://oion935wi.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170308174927.jpg)winform程序从ubuntu跑的服务中获取数据。
+实现方式记录相关：
+1 VS2017新建一个.netCore MvC项目123456引入Gray.Microsoft.AspNetCore.SignalR.Server Gr">
+<meta property="og:image" content="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg">
+<meta property="og:image" content="http://oion935wi.bkt.clouddn.com/1.png">
+<meta property="og:image" content="http://oion935wi.bkt.clouddn.com/2.png">
+<meta property="og:updated_time" content="2017-03-08T10:17:11.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Signal+.netCore+Ubuntu实现跨平台的数据转发方案">
+<meta name="twitter:description" content="实现效果如图123![](http://oion935wi.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170308174927.jpg)winform程序从ubuntu跑的服务中获取数据。
+实现方式记录相关：
+1 VS2017新建一个.netCore MvC项目123456引入Gray.Microsoft.AspNetCore.SignalR.Server Gr">
+<meta name="twitter:image" content="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="西十三的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      
+<div class="overlay"></div>
+ <img src="http://ohe5u4k9s.bkt.clouddn.com/528865142354925.jpg" width="400px" height="180px" />
+<div class="intrude-less">	  
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+			
+		</a> 
+		<hgroup>
+		  <h1 class="header-author"><a href="/">WestFive13</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Everybody Hurts.</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives/">所有博文</a></li>
+	        
+				<li><a href="/Pages/Map.html">我在</a></li>
+	        
+				<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+		        
+					<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+		        
+			</div>
+		</nav>
+		
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">WestFive13</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="http://ohe5u4k9s.bkt.clouddn.com/IMG_4159.JPG" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">WestFive13</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Everybody Hurts.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">所有博文</a></li>
+		        
+					<li><a href="/Pages/Map.html">我在</a></li>
+		        
+					<li><a href="http://www.jianshu.com/p/c3dae0951f74">前端资料</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="http://github.com/WestFive" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/6076206582" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/li-chen-27-74" title="zhihu">zhihu</a>
+			        
+						<a class="twitter" target="_blank" href="https://twitter.com/PublicEastFive" title="twitter">twitter</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-Cross" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Signal+.netCore+Ubuntu实现跨平台的数据转发方案
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg" alt=""></p>
+<p>实现效果如图<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![](http://oion935wi.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720170308174927.jpg)</div><div class="line"></div><div class="line">winform程序从ubuntu跑的服务中获取数据。</div></pre></td></tr></table></figure></p>
+<p><strong>实现方式记录相关：</strong></p>
+<p>1 VS2017新建一个.netCore MvC项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">引入</div><div class="line">Gray.Microsoft.AspNetCore.SignalR.Server </div><div class="line">Gray.Microsoft.AspNetCore.SignalR.Messaging;</div><div class="line">Microsoft.AspNetCore.WebSockets</div><div class="line">当然了，还有跨域的也一并引入得了。</div><div class="line">Microsoft.AspNetCore.Cors</div></pre></td></tr></table></figure></p>
+<p>核心代码</p>
+<p> startup类（启动类）ConfigureServices方法中注入跨域以及signalR服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public void ConfigureServices(IServiceCollection services)</div><div class="line">     &#123;</div><div class="line">         // Add framework services.</div><div class="line">         services.AddMvc();</div><div class="line">         services.AddSignalR(options=&gt; &#123;</div><div class="line">             options.Hubs.EnableDetailedErrors = true;</div><div class="line">         &#125;);</div><div class="line">         services.AddCors();</div><div class="line">        </div><div class="line"></div><div class="line">     &#125;</div></pre></td></tr></table></figure></p>
+<p>startup类中Configure方法中 注册相关的服务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">  public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)</div><div class="line">&#123;</div><div class="line">    loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;));</div><div class="line">    loggerFactory.AddDebug();</div><div class="line"></div><div class="line">    if (env.IsDevelopment())</div><div class="line">    &#123;</div><div class="line">        app.UseDeveloperExceptionPage();</div><div class="line"></div><div class="line">        // Browser Link is not compatible with Kestrel 1.1.0</div><div class="line">        // For details on enabling Browser Link, see https://go.microsoft.com/fwlink/?linkid=840936</div><div class="line">        // app.UseBrowserLink();</div><div class="line">    &#125;</div><div class="line">    else</div><div class="line">    &#123;</div><div class="line">        app.UseExceptionHandler(&quot;/Home/Error&quot;);</div><div class="line">    &#125;</div><div class="line">    ///*以下 */</div><div class="line">    app.UseStaticFiles();</div><div class="line">    app.UseWebSockets();//加入Websocket和SignalR支持</div><div class="line">    app.UseSignalR();</div><div class="line">    app.UseCors(builder=&gt;builder.WithOrigins(&quot;http://localhost&quot;));</div><div class="line">    //以上、、</div><div class="line"></div><div class="line">    app.UseMvc(routes =&gt;</div><div class="line">    &#123;</div><div class="line">        routes.MapRoute(</div><div class="line">            name: &quot;default&quot;,</div><div class="line">            template: &quot;&#123;controller=Home&#125;/&#123;action=Index&#125;/&#123;id?&#125;&quot;);</div><div class="line">    &#125;);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>特别注意</strong> 我们是在本地进行调试，如果你想在同一局域网上不通的地址访问。请在Program类中加入这个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public static void Main(string[] args)</div><div class="line">      &#123;</div><div class="line">          var host = new WebHostBuilder()</div><div class="line">              .UseKestrel()</div><div class="line">              .UseContentRoot(Directory.GetCurrentDirectory())</div><div class="line">              .UseIISIntegration()</div><div class="line">              .UseStartup&lt;Startup&gt;()</div><div class="line">              .UseApplicationInsights()</div><div class="line">              .UseKestrel().UseUrls(&quot;http://*:5000&quot;)//添加IP地址访问监听。</div><div class="line">              .Build();</div><div class="line"></div><div class="line">          host.Run();</div><div class="line">      &#125;</div></pre></td></tr></table></figure></p>
+<p>启动类写完了，SignalR Hub的写法与上一篇文章类似。<br>这里提供一个最简单的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> public class LeeHub:Hub</div><div class="line">&#123;</div><div class="line">    public void Send(string message)</div><div class="line">    &#123;</div><div class="line">        Clients.All.MessageRecive(message);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>winform调用举例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">hub.on(&quot;MessageRecive&quot;,(data)=&gt;</div><div class="line">&#123;</div><div class="line">    //yourcode to dealwith (data);</div><div class="line">&#125;)</div><div class="line"></div><div class="line"> hub.Invoke(&quot;Send&quot;,&quot;your words for example :\&apos;Hello world\&apos;&quot;);</div></pre></td></tr></table></figure></p>
+<p><strong>Ubuntu部分</strong><br>  <a href="https://www.microsoft.com/net/core#linuxubuntu" target="_blank" rel="external">微软官方安装Core</a></p>
+<p>  我用的是14.04桌面版的ubuntu<br>  安装流程如下<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo sh -c &apos;echo &quot;deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main&quot; &gt; /etc/apt/sources.list.d/dotnetdev.list&apos;</div><div class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893</div><div class="line">sudo apt-get update</div></pre></td></tr></table></figure></p>
+<p>  <strong>注意</strong><br>  以下这段话的意思是 请卸载之前的.netCore版本，官方提供了一个linux脚本。请务必卸载干净。<br>  至于为什么卸载。拓展阅读<br>  千万不要去网上下载之前的版本。否则最后的编译运行会出问题。<br>    <a href="http://www.oschina.net/news/73682/net-core-give-up-project-json" target="_blank" rel="external">.NET Core 计划弃用 project.json</a><br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  Install .NET Core SDK</div><div class="line">Before you start, please remove any previous versions of .NET Core from your system by using this script.</div><div class="line"></div><div class="line">To install .NET Core 1.1 on Ubuntu or Linux Mint, simply use apt-get.</div><div class="line"></div><div class="line">.NET Core 1.1 is the latest version. For long term support versions and additional downloads check the all Linux downloads section.</div></pre></td></tr></table></figure></p>
+<p>  安装完成后将你VS中发布后的代码拷贝进ubuntu中。</p>
+<p>这里默认已经安装好dotnet Core<br>在项目文件夹中打开终端。<br>或打开终端CD至项目文件夹，随你。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">命令流程Dotnet restore  //还原Nuget跨平台包，如果你1.0版本肯定会报错。提示找不到project.json 事实上1.0.0后的版本已经弃用JSON格式作为插件包</div><div class="line">//沿用之前的.csproj文件作为项目的支架。</div><div class="line"></div><div class="line">Dotnet restore //还原完成。</div><div class="line">Dotnet run</div></pre></td></tr></table></figure></p>
+<p>  <img src="http://oion935wi.bkt.clouddn.com/1.png" alt=""><br>  dotnet restore<br> <img src="http://oion935wi.bkt.clouddn.com/2.png" alt=""><br>  dotnet run</p>
+<p>  记得打开Ubuntu的端口访问权限。<br>  如果你在windows下VS中运行没问题。那么到ubuntu下提示的就是这个。<br>  OK<br>  打开<a href="http://localhost:5050" target="_blank" rel="external">http://localhost:5050</a> 吧</p>
+<p><strong>————————————————————————————————もう　やめろ———————————————————————————————————————</strong></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2017/03/08/Cross/" class="archive-article-date">
+  	<time datetime="2017-03-08T09:50:47.949Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-08</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/04/SignalR/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Signal以控制台作为宿主无需IIS。</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+<div class="share_addthis share_jia">
+  <div class="sharing addthis_toolbox share">
+  	<span class="jiathis_txt">Share to: &nbsp; </span>
+    <a class="addthis_button_facebook_like"></a>
+    <a class="addthis_button_tweet"></a>
+    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-560c64c35486b3d4" async="async"></script>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Cross" data-title="Signal+.netCore+Ubuntu实现跨平台的数据转发方案" data-url="http://yoursite.com/2017/03/08/Cross/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"westfive"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 West13
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://westfive.github.com">Design By West13</a>
+      	</div>
+    </div>
+  </div>
+  本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次, 本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次
+</footer>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    </div>
+    
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://aisijimo.ren">贱刘的博客</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">有家的流浪汉&lt;br&gt;&lt;br&gt;醒着的活死人&lt;br&gt;请折叠，谢谢合作。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
