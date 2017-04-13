@@ -6,23 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>震惊！DotNetCore CORS竟然有如此大的坑 | 西十三的Blog</title>
+  <title>笔记 | 西十三的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用跨域请第一个注入跨域
-话不多说直接看代码1234567891011121314151617public void ConfigureServices(IServiceCollection services)       &amp;#123;           services.AddCors(options =&amp;gt; options.AddPolicy(&amp;quot;AllowAll&amp;quot;,">
+  <meta name="description" content="博客搬迁到了 西五
+
+123http://www.westfive.cn 以上
+————————————————————————————————我是有底线的———————————————————————————————————————
+个人微博: 西十三lotos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="震惊！DotNetCore CORS竟然有如此大的坑">
-<meta property="og:url" content="http://yoursite.com/2017/03/10/dotnetCross/index.html">
+<meta property="og:title" content="笔记">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/PleaseREADME/index.html">
 <meta property="og:site_name" content="西十三的Blog">
-<meta property="og:description" content="使用跨域请第一个注入跨域
-话不多说直接看代码1234567891011121314151617public void ConfigureServices(IServiceCollection services)       &amp;#123;           services.AddCors(options =&amp;gt; options.AddPolicy(&amp;quot;AllowAll&amp;quot;,">
-<meta property="og:image" content="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg">
-<meta property="og:updated_time" content="2017-03-10T10:07:19.587Z">
+<meta property="og:description" content="博客搬迁到了 西五
+
+123http://www.westfive.cn 以上
+————————————————————————————————我是有底线的———————————————————————————————————————
+个人微博: 西十三lotos">
+<meta property="og:image" content="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg">
+<meta property="og:updated_time" content="2017-04-13T06:42:30.189Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="震惊！DotNetCore CORS竟然有如此大的坑">
-<meta name="twitter:description" content="使用跨域请第一个注入跨域
-话不多说直接看代码1234567891011121314151617public void ConfigureServices(IServiceCollection services)       &amp;#123;           services.AddCors(options =&amp;gt; options.AddPolicy(&amp;quot;AllowAll&amp;quot;,">
-<meta name="twitter:image" content="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg">
+<meta name="twitter:title" content="笔记">
+<meta name="twitter:description" content="博客搬迁到了 西五
+
+123http://www.westfive.cn 以上
+————————————————————————————————我是有底线的———————————————————————————————————————
+个人微博: 西十三lotos">
+<meta name="twitter:image" content="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg">
   
     <link rel="alternative" href="/atom.xml" title="西十三的Blog" type="application/atom+xml">
   
@@ -152,7 +161,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-dotnetCross" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-PleaseREADME" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -162,7 +171,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      震惊！DotNetCore CORS竟然有如此大的坑
+      笔记
     </h1>
   
 
@@ -170,20 +179,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/14601643955179853.jpg" alt=""></p>
-<p><strong>使用跨域请第一个注入跨域</strong></p>
-<p>话不多说直接看代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public void ConfigureServices(IServiceCollection services)</div><div class="line">       &#123;</div><div class="line">           services.AddCors(options =&gt; options.AddPolicy(&quot;AllowAll&quot;, p =&gt; p.AllowAnyOrigin()</div><div class="line">                                                                .AllowAnyMethod()</div><div class="line">                                                                 .AllowAnyHeader()</div><div class="line">                                                                 .AllowCredentials()));</div><div class="line">           // Add framework services.</div><div class="line">           services.AddMvc();</div><div class="line">           services.AddSignalR(options =&gt;</div><div class="line">           &#123;</div><div class="line">               options.Hubs.EnableDetailedErrors = true;</div><div class="line">           &#125;);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">       &#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)</div><div class="line">       &#123;</div><div class="line">           app.UseCors(&quot;AllowAll&quot;);</div><div class="line">           loggerFactory.AddConsole(Configuration.GetSection(&quot;Logging&quot;));</div><div class="line">           loggerFactory.AddDebug();</div><div class="line"></div><div class="line">           if (env.IsDevelopment())</div><div class="line">           &#123;</div><div class="line">               app.UseDeveloperExceptionPage();</div><div class="line"></div><div class="line"></div><div class="line">           &#125;</div><div class="line">           else</div><div class="line">           &#123;</div><div class="line">               app.UseExceptionHandler(&quot;/Home/Error&quot;);</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           app.UseStaticFiles();</div><div class="line">           app.UseWebSockets();//加入Websocket和SignalR支持</div><div class="line">           app.UseSignalR();</div><div class="line">         </div><div class="line"></div><div class="line"></div><div class="line">           app.UseMvc(routes =&gt;</div><div class="line">           &#123;</div><div class="line">               routes.MapRoute(</div><div class="line">                   name: &quot;default&quot;,</div><div class="line">                   template: &quot;&#123;controller=Home&#125;/&#123;action=Index&#125;/&#123;id?&#125;&quot;);</div><div class="line">           &#125;);</div><div class="line"></div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<p>然后在每个Controller方法中使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">[EnableCors(&quot;AllowAll&quot;)]</div><div class="line">      public IActionResult Index()</div><div class="line">      &#123;</div><div class="line">          return View();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      public IActionResult About()</div><div class="line">      &#123;</div><div class="line">          //ViewData[&quot;Message&quot;] = &quot;Your application description page.&quot;;</div><div class="line"></div><div class="line">          return View();</div><div class="line">      &#125;</div><div class="line"></div><div class="line"></div><div class="line">      [EnableCors(&quot;AllowAll&quot;)]</div><div class="line">      public IActionResult Contact()</div><div class="line">      &#123;</div><div class="line">          //ViewData[&quot;Message&quot;] = &quot;Your contact page.&quot;;</div><div class="line"></div><div class="line">          return View();</div><div class="line">      &#125;</div><div class="line">      [EnableCors(&quot;AllowAll&quot;)]</div><div class="line">      public IActionResult Chat()</div><div class="line">      &#123;</div><div class="line">         </div><div class="line">          return View();</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      [EnableCors(&quot;AllowAll&quot;)]</div><div class="line">      public IActionResult Error()</div><div class="line">      &#123;</div><div class="line">          return View();</div><div class="line">      &#125;</div></pre></td></tr></table></figure></p>
-<p>即使被坑了一个下午，不骄不躁，这个时候保持微笑就好了。<br>艹。</p>
-<p><strong>————————————————————————————————もう　やめろ———————————————————————————————————————</strong></p>
+        <p><img src="http://ohe5u4k9s.bkt.clouddn.com/proxy.jpg" alt=""></p>
+<blockquote>
+<p>博客搬迁到了 <a href="http://www.westfive.cn" target="_blank" rel="external">西五</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">http://www.westfive.cn </div><div class="line"></div><div class="line">以上</div></pre></td></tr></table></figure>
+<p><strong>————————————————————————————————我是有底线的———————————————————————————————————————</strong></p>
+<p>个人微博: <a href="http://weibo.com/u/6076206582?is_hot=1" target="_blank" rel="external">西十三lotos</a></p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2017/03/10/dotnetCross/" class="archive-article-date">
-  	<time datetime="2017-03-10T10:00:32.816Z" itemprop="datePublished"><i class="icon-clock"></i>2017-03-10</time>
+      <a href="/2017/04/13/PleaseREADME/" class="archive-article-date">
+  	<time datetime="2017-04-13T06:41:19.665Z" itemprop="datePublished"><i class="icon-clock"></i>2017-04-13</time>
 </a>
       
       
@@ -196,18 +205,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/13/PleaseREADME/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/08/Cross/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Signal+.netCore+Ubuntu实现跨平台的数据转发方案</div>
+    <a href="/2017/03/10/dotnetCross/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">震惊！DotNetCore CORS竟然有如此大的坑</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -253,7 +253,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="dotnetCross" data-title="震惊！DotNetCore CORS竟然有如此大的坑" data-url="http://yoursite.com/2017/03/10/dotnetCross/"></div>
+	<div class="ds-thread" data-thread-key="PleaseREADME" data-title="笔记" data-url="http://yoursite.com/2017/04/13/PleaseREADME/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
